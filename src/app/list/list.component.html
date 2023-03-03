@@ -1,0 +1,21 @@
+<div>
+  <h1 class="ms-1 mt-1">Lista libri</h1>
+
+  <mat-list>
+    <!-- <div *ngFor="let libro of libri$ | async" class="ms-1 mb-1">
+      {{libro.id}} - {{libro.titolo}} - {{libro.autore}} - {{libro.prezzoCopertina}}
+      <button (click)="canc(libro.id)" mat-flat-button color="warn" class="ms-1">Canc</button>
+      <button (click)="update(libro)" mat-flat-button color="primary" class="ms-1">Update</button>
+    </div> -->
+
+    <mat-list-item *ngFor="let libro of libri$ | async" class="book-list">
+      <span matListItemTitle>{{libro.id}}) {{libro.titolo}}</span>
+      <span matListItemLine>Autore: {{libro.autore}}</span>
+      <span matListItemLine>Prezzo: {{libro.prezzoCopertina}}</span>
+      <span matListItemLine class="mt-1 mb-1">
+        <button (click)="canc(libro.id)" mat-flat-button color="warn" class="ms-1">Delete</button>
+        <button (click)="update(libro)" mat-flat-button color="primary" class="ms-1">Update</button>
+      </span>
+    </mat-list-item>
+  </mat-list>
+</div>

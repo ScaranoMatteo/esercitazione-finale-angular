@@ -1,0 +1,65 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <!-- Barra di navigazione laterale -->
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async)">
+
+    <!-- Testo "Menu" -->
+    <mat-toolbar color="black">Menu</mat-toolbar>
+
+    <!-- Link Barra di navigazione laterale -->
+    <mat-nav-list>
+      <!-- Link "Lista Libri" -->
+      <a mat-list-item routerLink="book-list" (click)="drawer.toggle()" class="sidenav-button">
+        <mat-icon>collections_bookmark</mat-icon>
+        <span>Lista Libri</span>
+      </a>
+
+      <!-- Link "Aggiungi Libro" -->
+      <a mat-list-item routerLink="add-book" (click)="drawer.toggle()" class="sidenav-button">
+        <mat-icon>library_add</mat-icon>
+        <span>Aggiungi Libro</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  
+  <!-- Barra di navigazione -->
+  <mat-sidenav-content>
+    <mat-toolbar color="white" class="toolbar">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      
+      <!-- Titolo Barra di navigazione -->
+      <div routerLink="/" class="navbar-title">
+        <mat-icon>library_books</mat-icon>
+        <span>Gestione Libri</span>
+      </div>
+
+      <!-- Pulsanti Barra di navigazione -->
+      <div *ngIf="!(isHandset$ | async)" class="navbar-buttons-container">
+        <!-- Pulsante "Lista Libri" -->
+        <button mat-raised-button routerLink="book-list" class="navbar-button">
+          <mat-icon>collections_bookmark</mat-icon>
+          <span>Lista Libri</span>
+        </button>
+        
+        <!-- Pulsante "Aggiungi Libro" -->
+        <button mat-raised-button routerLink="add-book" class="navbar-button">
+          <mat-icon>library_add</mat-icon>
+          <span>Aggiungi Libro</span>
+        </button>
+      </div>
+    </mat-toolbar>
+    
+    <!-- Router Outlet -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
