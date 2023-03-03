@@ -1,3 +1,3 @@
-## Esercitazione finale Angular
+## Esercitazione finale
 
 Esercitazione finale Angular di Matteo Scarano
